@@ -10,6 +10,7 @@
     <Compile Include="Solve1.fs" />
     <Compile Include="Solve2.fs" />
     <Compile Include="Solve3.fs" />
+    <Compile Include="Solve4.fs" />
     <Content Include="days\4.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
