@@ -17,3 +17,4 @@ let printLines format lines =
 let printDayInput day = readDayInput day |> printLines "%A"
 
 let readDayInputAsInt day = readDayInput day |> Seq.map System.Int32.Parse
+let readDayInputAsCSVInt day = readDayInput day |> fun x -> (Seq.head x).Split ',' |> Seq.map System.Int32.Parse
