@@ -9,6 +9,7 @@ let readLines (filePath:string) = seq {
 }
 
 let readDayInput day = readLines $"./days/{day}.txt"
+let readTestInput day = readLines $"./days/test.txt"
 
 let printLines format lines = 
     for a in lines do
