@@ -7,7 +7,8 @@ open Solve5
 open Solve6
 open Solve7
 open Solve8
-open System
+open Solve9
+open Solve10
 
 //printfn "%d" d1p1
 //printfn "%d" d1p2
@@ -23,5 +24,9 @@ open System
 //printfn "%d" d6p2
 //printfn "%d" d7p1
 //printfn "%d" d7p2
-printfn "%d" d8p1
-printfn "%d" d8p2
+//printfn "%d" d8p1
+//printfn "%d" d8p2
+printfn "%d" d9p1
+printfn "%d" d9p2
+printfn "%d" d10p1
+printfn "%d" d10p2
