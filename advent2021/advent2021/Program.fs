@@ -35,4 +35,5 @@ open Solve12
 //printfn "%A" d11p1
 //printfn "%A" d11p2
 printfn "%A" d12p1
-//printfn "%A" d12p2
+printfn "%A" d12p2
+
