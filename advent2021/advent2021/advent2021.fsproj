@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Utils.fs" />
     <Compile Include="Input.fs" />
     <Compile Include="Solve1.fs" />
     <Compile Include="Solve2.fs" />
@@ -17,6 +18,14 @@
     <Compile Include="Solve8.fs" />
     <Compile Include="Solve9.fs" />
     <Compile Include="Solve10.fs" />
+    <Compile Include="Solve11.fs" />
+    <Compile Include="Solve12.fs" />
+    <Content Include="days\12.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="days\11.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="days\test.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

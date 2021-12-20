@@ -2,29 +2,11 @@
 
 open Input
 open System
+open Utils
 
-module Array2D =
-    let filterCoords f (s:'a[,]) = Seq.map (fun x -> Seq.map (fun y -> (x,y)) {0..(Array2D.length2 s) - 1}) {0..(Array2D.length1 s) - 1} |>
-                                    Seq.concat |> Seq.filter (fun (x,y) -> (f s x y))
+let getNeighbourSet (arr:int[,]) x y = Set.ofArray (Array2D.getNeighbours4 arr x y)
 
-let charToInt c = int c - int '0'
-
-let getNeighbours arr x y = 
-    match (x > 0, y > 0, Array2D.length1 arr - x > 1, Array2D.length2 arr - y > 1) with
-    | (true, true, true, true) -> [|(x-1,y);(x,y-1);(x+1,y);(x,y+1)|]
-    | (false, true, true, true) -> [|(x,y-1);(x+1,y);(x,y+1)|]
-    | (true, false, true, true) -> [|(x-1,y);(x+1,y);(x,y+1)|]
-    | (true, true, false, true) -> [|(x-1,y);(x,y-1);(x,y+1)|]
-    | (true, true, true, false) -> [|(x-1,y);(x,y-1);(x+1,y)|]
-    | (false, false, true, true) -> [|(x+1,y);(x,y+1)|]
-    | (true, false, false, true) -> [|(x-1,y);(x,y+1)|]
-    | (true, true, false, false) -> [|(x-1,y);(x,y-1)|]
-    | (false, true, true, false) -> [|(x,y-1);(x+1,y)|]
-    | _ -> raise (Exception("WHAT IS GOING ON?!?!?"))
-
-let getNeighbourSet (arr:int[,]) x y = Set.ofArray (getNeighbours arr x y)
-
-let getNeighbourValues arr x y = getNeighbours arr x y |> Array.map (fun (x,y) -> arr[x,y])
+let getNeighbourValues arr x y = Array2D.getNeighbours4 arr x y |> Array.map (fun (x,y) -> arr[x,y])
 let isLowPoint arr x y = getNeighbourValues arr x y |> Array.forall (fun z -> arr[x,y] < z)
 let isLowPointV arr x y _ = isLowPoint arr x y
 let calcRiskLevel arr x y v = if isLowPointV arr x y v
