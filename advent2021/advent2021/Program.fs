@@ -11,6 +11,7 @@ open Solve9
 open Solve10
 open Solve11
 open Solve12
+open Solve13
 
 //printfn "%d" d1p1
 //printfn "%d" d1p2
@@ -34,6 +35,6 @@ open Solve12
 //printfn "%d" d10p2
 //printfn "%A" d11p1
 //printfn "%A" d11p2
-printfn "%A" d12p1
-printfn "%A" d12p2
+printfn "%A" d13p1
+d13p2 |> Seq.fold (fun acc s -> printfn "%A" s) () 
 
