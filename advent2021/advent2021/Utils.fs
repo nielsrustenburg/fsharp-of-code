@@ -1,5 +1,6 @@
 ﻿module Utils
 open System
+open FParsec
 
 let charToInt (c:char) = int c - int '0'
 
@@ -35,3 +36,17 @@ module Array2D =
 
     let getNeighbour4Set arr x y = getNeighbours4 arr x y |> Set.ofArray
     let getNeighbour8Set arr x y = getNeighbours8 arr x y |> Set.ofArray
+
+module Seq =
+    //let successful seq = 
+    //    let filterForSuccess parsed = 
+    //        match parsed with 
+    //        | Success(result, _, _)   -> Some(result)
+    //        | Failure(errorMsg, _, _) -> None
+    //    Seq.choose filterForSuccess seq
+    let successful f seq = 
+        let filterForSuccess parsed = 
+            match parsed with 
+            | Success(result, _, _)   -> Some(result)
+            | Failure(errorMsg, _, _) -> None
+        Seq.choose (f >> filterForSuccess) seq

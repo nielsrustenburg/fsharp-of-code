@@ -1,6 +1,7 @@
 ﻿module Solve13
 open FParsec
 open Input
+open Utils
 
 type Dot = {
     X: int
@@ -15,14 +16,9 @@ type FoldLine = {
 let pdot = pint32 .>> pchar ',' .>>. pint32 |>> fun (x,y) -> {X = x; Y = y} 
 let pfold = pstring "fold along " >>. anyChar .>> pchar '=' .>>. pint32 |>> fun (axis, pos) -> {Axis = axis; Position = pos}
 
-let filterForSuccess parsed = 
-    match parsed with 
-    | Success(result, _, _)   -> Some(result)
-    | Failure(errorMsg, _, _) -> None
-
 let parseInput = 
     readDayInput 13 |> Seq.map (fun s -> (run pdot s, run pfold s)) 
-    |> fun seq -> (Seq.choose filterForSuccess (Seq.map fst seq), Seq.choose filterForSuccess (Seq.map snd seq))
+    |> fun seq -> (Seq.successful fst seq, Seq.successful snd seq)
     |> fun (dots, folds) -> (Set.ofSeq dots, List.ofSeq folds)
 
 let (|Same|FoldX|FoldY|) ((dot:Dot), (fold:FoldLine)) =
