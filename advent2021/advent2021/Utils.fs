@@ -4,6 +4,8 @@ open FParsec
 
 let charToInt (c:char) = int c - int '0'
 
+let triangleNumber n = (n*(n+1))/2
+
 module Array2D =
     let filterCoords f (s:'a[,]) = Seq.map (fun x -> Seq.map (fun y -> (x,y)) {0..(Array2D.length2 s) - 1}) {0..(Array2D.length1 s) - 1} |>
                                     Seq.concat |> Seq.filter (fun (x,y) -> (f s x y))
@@ -50,3 +52,4 @@ module Seq =
             | Success(result, _, _)   -> Some(result)
             | Failure(errorMsg, _, _) -> None
         Seq.choose (f >> filterForSuccess) seq
+
