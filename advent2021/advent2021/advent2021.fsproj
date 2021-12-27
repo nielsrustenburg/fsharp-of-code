@@ -26,6 +26,9 @@
     <Compile Include="Solve16.fs" />
     <Compile Include="Solve17.fs" />
     <Compile Include="Solve18.fs" />
+    <Content Include="days\18.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="days\17.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
