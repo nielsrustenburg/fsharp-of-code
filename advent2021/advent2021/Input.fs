@@ -8,7 +8,11 @@ let readLines (filePath:string) = seq {
         yield sr.ReadLine ()
 }
 
+let readAsString (filePath:string) = 
+    File.ReadAllText(filePath)
+
 let readDayInput day = readLines $"./days/{day}.txt"
+let readDayInputAsSingleString day = readAsString $"./days/{day}.txt"
 let readTestInput day = readLines $"./days/test.txt"
 
 let printLines format lines = 

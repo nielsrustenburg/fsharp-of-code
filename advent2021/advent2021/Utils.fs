@@ -53,3 +53,11 @@ module Seq =
             | Failure(errorMsg, _, _) -> None
         Seq.choose (f >> filterForSuccess) seq
 
+    let rec repeat n s =
+        match n with 
+        | 0 -> Seq.empty
+        | n -> seq{yield! s; yield! repeat (n-1) s}
+    
+    let repeatElements n s = 
+        Seq.fold (fun acc x -> seq{yield! acc; yield! Seq.replicate n x}) Seq.empty s
+
