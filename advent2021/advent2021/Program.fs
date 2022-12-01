@@ -20,6 +20,7 @@ open Solve18
 open Solve19
 open Solve20
 open Solve21
+open Solve22
 
 //printfn "%d" d1p1
 //printfn "%d" d1p2
@@ -59,6 +60,7 @@ open Solve21
 //printfn "%A" d19p2
 //printfn "%A" d20p1
 //printfn "%A" d20p2
-printfn "%A" d21p1
-printfn "%A" d21p2
-
+//printfn "%A" d21p1
+//printfn "%A" d21p2
+printfn "%A" d22p1
+printfn "%A" d22p2
