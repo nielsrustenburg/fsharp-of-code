@@ -9,6 +9,7 @@
   <ItemGroup>
     <Compile Include="Input.fs" />
     <Compile Include="Solve1.fs" />
+    <Compile Include="Solve2.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 

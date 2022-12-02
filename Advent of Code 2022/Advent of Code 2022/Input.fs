@@ -1,6 +1,8 @@
 ﻿module Input
 
 open System.IO
+open FParsec
+open System
 
 let readLines (filePath:string) = seq {
     use sr = new StreamReader (filePath)
@@ -23,3 +25,8 @@ let printDayInput day = readDayInput day |> printLines "%A"
 
 let readDayInputAsInt day = readDayInput day |> Seq.map System.Int32.Parse
 let readDayInputAsCSVInt day = readDayInput day |> fun x -> (Seq.head x).Split ',' |> Seq.map System.Int32.Parse
+
+let unwrap x = match x with
+            | Success(s,_,_) -> s
+            | Failure(err,st,_) -> raise (Exception(st.ToString()))
+let runwrap p s = run p s |> unwrap
