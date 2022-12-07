@@ -49,4 +49,16 @@ let rec applyAllInstructions (instructions: (int * char * char) list) (stacks: M
 let getTopBoxesAsString (stacks: Map<char, char list>) = Map.fold (fun s k v -> (k,List.head v)::s) [] stacks |> List.sortBy (fun (k,v) -> k) |> List.map (fun (k,v) -> v) |> Array.ofList |> System.String
 
 let d5p1 = readDayInputAsSingleString 5 |> runwrap pwholeinput |> fun (x,y) -> applyAllInstructions y x |> getTopBoxesAsString
-let d5p2 = "soon"
+
+let applyInstructionV2 (stacks: Map<char, char list>) (amount: int32, from: char, towards: char) = 
+    match (amount, Map.find from stacks, Map.find towards stacks) with
+    | (0, _,_) -> stacks
+    | (x, f, t) -> (Map.add from (List.skip x f) (Map.add towards (List.append (List.take x f) t) stacks))
+
+let rec applyAllInstructionsV2 (instructions: (int * char * char) list) (stacks: Map<char, char list>) = 
+    match instructions with
+    | [ins] -> applyInstructionV2 stacks ins
+    | h::t  -> (applyInstructionV2 stacks h) |> applyAllInstructionsV2 t
+    | _ -> failwith "you buffoonV2"
+
+let d5p2 = readDayInputAsSingleString 5 |> runwrap pwholeinput |> fun (x,y) -> applyAllInstructionsV2 y x |> getTopBoxesAsString
