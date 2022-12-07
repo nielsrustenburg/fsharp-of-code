@@ -12,6 +12,7 @@
     <Compile Include="Solve2.fs" />
     <Compile Include="Solve3.fs" />
     <Compile Include="Solve4.fs" />
+    <Compile Include="Solve5.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
